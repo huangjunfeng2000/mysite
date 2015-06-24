@@ -55,7 +55,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+		os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
+		],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +69,14 @@ TEMPLATES = [
         },
     },
 ]
+
+#Not used for django 1.8
+TEMPLATE_DIRS = (
+		os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
+		os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
+		'd:/mysite/mysite/templates',
+		)
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
